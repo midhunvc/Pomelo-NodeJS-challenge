@@ -24,7 +24,7 @@ https://www.getpostman.com/collections/3e8912cdd714b0c26d7f
 #### run nodejs back-end 
 
       > cd server
-        npm install
+      > npm install
   #####  run the code
       > nodemon
   ##### or
