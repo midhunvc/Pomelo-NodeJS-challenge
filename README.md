@@ -24,10 +24,10 @@ https://www.getpostman.com/collections/3e8912cdd714b0c26d7f
 #### run nodejs back-end 
 
       > cd server
-      > npm install
-    run the code
+        npm install
+  #####  run the code
       > nodemon
-    or
+  ##### or
       > npm start
 
 #### HTML front-end
