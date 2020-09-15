@@ -1,0 +1,55 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "pinetech test project",
+      "description": "conver one json format to other json format",
+      "version": "0.0.1"
+    },
+    "servers": [
+      {
+        "url": "http://localhost:4000",
+        "description": "Nodejs Server"
+      }
+    ],
+    "components": {
+      "securitySchemes": {
+        "BearerAuth": {
+          "type": "http",
+          "scheme": "bearer"
+        }
+      }
+    },
+    "paths": {
+      "/jsonConvert": {
+        "post": {
+          "summary": "convert json format to other format",
+          "tags": [
+            "json"
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "json converted"
+            },
+            "500": {
+              "description": "json not converted"
+            }
+          }
+        }
+      }
+    }
+  }

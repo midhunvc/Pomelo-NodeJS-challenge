@@ -1,0 +1,61 @@
+        <html>
+        <body>
+            <h1>Pagination</h1>
+            <button onclick="First()">First</button>
+            <button onclick="Previous()">Previous</button>
+            <button onclick="Next()">Next</button>
+            <button onclick="Last()">Last</button>
+            <p id="demo"></p>
+            <br />
+            <script>
+                var arr = [];
+                var currentPage = 1;
+                var pageSize = 10;
+                var skip = 0;
+                var totalCount = 0;
+                var totalPage = 0;
+                var apiUrl = 'http://localhost:4000/pagination';
+
+                const myFunction = async () => {
+                    await fetch(apiUrl, { mode: 'no-cors'}).then((response)=>{
+                        console.log(response);
+                        arr=response;
+                    });
+                    totalCount = arr.length;
+                    totalPage = Math.ceil(totalCount / pageSize);
+                    var citrus = arr.slice(skip, skip + pageSize);
+                    document.getElementById("demo").innerHTML = citrus;
+                    
+                }
+                
+                myFunction();
+
+                function First() {
+                    currentPage = 1;
+                    skip = 0;
+                    myFunction();
+                }
+
+                function Next() {
+                    if (currentPage < totalPage) currentPage++;
+                    skip = pageSize * (currentPage - 1);
+                    myFunction();
+                }
+
+                function Previous() {
+                    if (currentPage > 1) currentPage--;
+                    skip = pageSize * (currentPage - 1);
+                    myFunction();
+                }
+
+                function Last() {
+                    currentPage = totalPage;
+                    skip = pageSize * (currentPage - 1);
+                    myFunction();
+                }
+
+                
+            </script>
+
+        </body>
+        </html>
